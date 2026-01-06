@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luhn Card Validator (C++)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #00ff9d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Luhn Algorithm Card Validator (C++ Code)</h2>
+    <p>Below is the C++ implementation you provided:</p>
+
+    <pre>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// ---------------------- LUHN ALGORITHM FUNCTION ----------------------
+bool luhnCheck(const string &amp;card) {
+    int sum = 0;
+    bool doubleDigit = false;
+
+    // Traverse digits from RIGHT to LEFT
+    for (int i = card.size() - 1; i &gt;= 0; --i) {
+        int d = card[i] - '0';
+
+        if (doubleDigit) {
+            d *= 2;
+            if (d &gt; 9)
+                d -= 9;
+        }
+
+        sum += d;
+        doubleDigit = !doubleDigit;
+    }
+
+    // Valid if divisible by 10
+    return (sum % 10 == 0);
+}
+
+// ---------------------- MAIN FUNCTION ----------------------
+int main() {
+    string card;
+    cout &lt;&lt; "Enter card number: ";
+    getline(cin, card);
+
+    string clean = "";
+
+    // Clean input: keep only digits
+    for (char c : card) {
+        if (c == ' ' || c == '-') 
+            continue;
+        else if (isdigit(c))
+            clean += c;
+        else {
+            cout &lt;&lt; "Invalid character in input. Use only digits, spaces, or -.\n";
+            return 0;
+        }
+    }
+
+    if (clean.empty()) {
+        cout &lt;&lt; "No number entered.\n";
+        return 0;
+    }
+
+    if (luhnCheck(clean))
+        cout &lt;&lt; "Valid card number ✅\n";
+    else
+        cout &lt;&lt; "Invalid card number ❌\n";
+
+    return 0;
+}
+    </pre>
+
+</body>
+</html>
