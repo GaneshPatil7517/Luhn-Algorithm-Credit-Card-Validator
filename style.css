@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+pre {
+    background: #1e1e1e;
+    color: #00ff9d;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+}
